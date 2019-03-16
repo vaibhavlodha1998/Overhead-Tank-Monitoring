@@ -5,7 +5,7 @@ if($con)
 {	echo"connection successfull";}
 else
 {	echo"no connection";}
-msqli_select_db($con,'user');
+mysqli_select_db($con,'user');
 $name = $_POST['nick'];
 $email = $_POST['email'];
 $pass= $_POST['password'];
