@@ -51,9 +51,25 @@
                 <div class="form-group">
                     <input class="form-control form-control-lg" id="pass1" name="password" type="password" required="" placeholder="Password">
                 </div>
+                <!-- code for multiple div in sign up-->
                 <div class="form-group">
-                    <input class="form-control form-control-lg" id="tank_no" name="tank_no" type="number" required="" placeholder="number of tanks">
+                    <input class="form-control form-control-lg" id="tank_no" name="tank_no" type="number" required="" placeholder="number of tanks"></br>
+                    <input type="button" value="cube" onclick="getcube()"/></br>
                 </div>
+                <script type="text/javascript">  
+                    function getcube(){  
+                        var number=document.getElementById("tank_no").value;  
+                        for (var i = 0; i < number; i++) {
+                            var iDiv = document.createElement('div');
+                            iDiv.id = 'block[i]';
+                            iDiv.className = 'form-group';
+                            document.getElementsByTagName('body')[0].appendChild(iDiv);
+                            iDiv.innerHTML = "<input type=number>";
+
+                        }  
+                    }  
+                </script>    
+
                 <!-- <div class="form-group">
                     <input class="form-control form-control-lg" required="" placeholder="Confirm">
                 </div> -->
