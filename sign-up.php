@@ -49,32 +49,19 @@
                     <input class="form-control form-control-lg" type="email" name="email" required="" placeholder="E-mail" autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <input class="form-control form-control-lg" id="pass1" name="password" type="password" required="" placeholder="Password">
+                    <input class="form-control form-control-lg" id="pass1" name="password" type="password" required="true" placeholder="Password" autocomplete="off">
                 </div>
                 <!-- code for multiple div in sign up-->
-                <div class="form-group">
-                    <input class="form-control form-control-lg" id="tank_no" name="tank_no" type="number" required="" placeholder="number of tanks"></br>
-                    <input type="button" value="cube" onclick="getcube()"/></br>
-                </div>
-                <script type="text/javascript">  
-                    function getcube(){  
-                        var number=document.getElementById("tank_no").value;  
-                        for (var i = 0; i < number; i++) {
-                            var iDiv = document.createElement('div');
-                            iDiv.id = 'block[i]';
-                            iDiv.className = 'form-group';
-                            document.getElementsByTagName('body')[0].appendChild(iDiv);
-                            iDiv.innerHTML = "<input type=number>";
-
-                        }  
-                    }  
-                </script>    
+                <div class="form-group btn-group-sm">
+                    <input class="form-control form-control-lg" id="tank_no" name="tank_no" type="number" required="true" placeholder="Number of Tanks"></br>
+                    <input class="btn btn-primary" type="button" value="Register Tank" onclick="register_tank()"/></br>
+                </div>   
 
                 <!-- <div class="form-group">
                     <input class="form-control form-control-lg" required="" placeholder="Confirm">
                 </div> -->
                 <div class="form-group pt-2">
-                    <button class="btn btn-block btn-primary" type="submit">Register My Account</button>
+                    <button class="btn btn-block btn-success" type="submit">Register My Account</button>
                 </div>
                 
                 <!-- <div class="form-group">
@@ -89,14 +76,49 @@
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <button class="btn  btn-block btn-social btn-twitter" type="button">Twitter</button>
                     </div>
-                </div>
-            </div> -->
+                </div> -->
+            <!-- </div> -->
             <div class="card-footer bg-white">
                 <p>Already member? <a href="index.php" class="text-secondary">Login Here.</a></p>
             </div>
         </div>
     </form>
 </body>
-
+<script type="text/javascript">
+    function register_tank() 
+    {
+        let number=document.getElementById("tank_no").value;
+        if(number=='' || number==0)
+        {
+            alert("Enter a valid value greater than 0.");
+        }
+        else
+        {
+            let arr=[];
+            const code_len=10;
+            for (var i = 0; i < number; i++) {
+                let tank_id=prompt("Enter Tank ID "+(i+1));
+                if(tank_id.length==code_len)
+                {
+                    arr.push(tank_id);   
+                }
+                else
+                {
+                    while(tank_id.length != code_len)
+                    {
+                        alert("Enter 10 digit Tank ID Code..")
+                        tank_id=prompt("Enter Tank ID "+(i+1));
+                        if (tank_id.length==code_len)
+                         {
+                            arr.push(tank_id);
+                         }
+                    }
+                }
+                
+            }
+            // console.log(arr);
+        }
+    }
+</script>
  
 </html>
